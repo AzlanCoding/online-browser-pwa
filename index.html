@@ -1,7 +1,7 @@
 <script src="update.js"></script>
 <script src="sw.js"></script>
 <script>
-let d = new Date();
+/*let d = new Date();
 //alert(d);
 
 let hrs = d.getHours();
@@ -20,7 +20,8 @@ if (data_arr[0] === "lock") {
   alert(data_arr[0]);
 }
 console.log(data_arr[0]);
-});
+});*/
+// Disable lock
 </script>
 
 <!DOCTYPE html>
@@ -33,19 +34,20 @@ body {
 <head>
   <meta name="theme-color" content="#2C2F33">
   <meta charset="UTF-8">
-  <meta name="description" content="Azlan's iframe Browser">
+  <meta name="description" content="Azlan's Online Browser">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0, no-store">
   <!meta http-equiv="cache-control" content="max-age=0" />
   <!meta http-equiv="Pragma" content="no-cache">
   <!meta http-equiv="Expires" content="0">
-  <title> Iframe Browser </title>
-  <link rel="canonical" href="https://azlancoding.github.io/iframe-browser-pwa/" />
-  <link rel="manifest" href="/iframe-browser-pwa/manifest.webmanifest">
-  <meta name="keywords" content="bypass, school, browser in website, cloud browser">
+  <title> Online Browser </title>
+  <link rel="canonical" href="https://azlancoding.github.io/online-browser-pwa/" />
+  <link rel="manifest" href="/online-browser-pwa/manifest.webmanifest">
+  <meta name="keywords" content="bypass, school, browser in website">
   <link rel="stylesheet" href="css/styles.css">
-  <title> iFrame browser </title>
+  <title> Online browser </title>
   <script language="javascript">
+    let serverurl = "https://online-browser-us.herokuapp.com/"
 	const getValidUrl = (url = "") => {
     let newUrl = window.decodeURIComponent(url);
     newUrl = newUrl.trim().replace(/\s/g, "");
@@ -93,12 +95,13 @@ function checkSession(){
      alert("Welcome back! Make sure you have your extension on.");
    } 
 	else {
-	alert("By continuing, you agree to the terms and conditions in azlancoding.github.io/iframe-browser/TermsAndConditions")
-	ext_install();
+	alert("By continuing, you agree to the terms and conditions in azlancoding.github.io/online-browser/TermsAndConditions")
+	//ext_install();
    }
 }
 function ext_install() 
 	{
+  return //no longer needed
   if (window.confirm('An extension is required for this website to work. Do you want to install it now?')) 
    {	
 		setCookie("visited", "yes", 365)
@@ -113,6 +116,26 @@ function checkCookie() {
 	} else 
 	{ext_install();}
 	
+}
+
+function ser(){
+   if (serverurl == "https://online-browser-eur.herokuapp.com/"){
+     us();
+   } else if (serverurl == "https://online-browser-us.herokuapp.com/"){
+     eur();
+   }
+}
+	  	  
+function eur(){
+   serverurl = "https://online-browser-eur.herokuapp.com/";
+   document.getElementById("serverbutton").value = "Change to US server";
+   LoadPage();
+}
+
+function us(){
+   serverurl = "https://online-browser-us.herokuapp.com/";
+   document.getElementById("serverbutton").value = "Change to EUR server";
+   LoadPage();
 }
    //document.getElementById("myIframe").src = "https://wwf.org";
    var iframe = document.getElementById("myIframe");
@@ -135,12 +158,8 @@ function checkCookie() {
    function LoadPage()
    { 
      var objFrame=document.getElementById("myIframe");
-     if (document.getElementById("URL").value != "") {
-     	var newurl = getValidUrl(document.getElementById("URL").value);
-     	objFrame.src = newurl;
-     } else {
-	   	objFrame.src = "https://azlancoding.github.io/iframe-browser-pwa/404.html";
-		 }   
+     //var newurl = getValidUrl(document.getElementById("URL").value);
+     objFrame.src = serverurl;
    }
    function ReloadPage()
    {
@@ -283,41 +302,40 @@ body {
 <body style="background-color:#254B85">
 <div id="titleBarContainer" >
       <div id="titleBar">
-        <span class="draggable" style="font-size: 65%; width: 8vh; height: 5vh">Iframe Browser</span>
-        <input class="nonDraggable" type="text" ID="URL" placeholder="Enter a URL" spellcheck="false" value="https://www.google.com" size="25px"></input>
-	<input type="submit" class="frmSubmit" value="Go" onclick="LoadPage()">
+        <span class="draggable" style="font-size: 65%; width: 8vh; height: 5vh">Online Browser</span>
+	<!-- input type="submit" class="frmSubmit" value="Go" onclick="LoadPage()" -->
+	<input type="button" VALUE="Change to EUR server"  onClick="ser()" id="serverbutton">
 	<input type="button" VALUE="&#x21bb"  onClick="ReloadPage()">
         <input type="button" VALUE="&#65513"  onClick="history.back()">
         <input type="button" VALUE="&#65515"  onClick="history.forward()">
         <input type="button" class="fullscreen" value="&#x26F6;" onclick="openFullscreen()">
         <input type="button" class="Exitfullscreen" value="Exit Fullscreen" onclick="closeFullscreen()">
-        <input type="button" class="newWindow" value="New Window" onclick=" window.open('https://azlancoding.github.io/iframe-browser-pwa/','_blank')">
-        <input type="button" class="cloudbrowser" value="Cloud Browser" onclick="window.open('https://replit.com/@azlancoding/free-and-unlimited-cloud-browser?embed=true','_blank')">
+        <input type="button" class="newWindow" value="New Window" onclick=" window.open('https://azlancoding.github.io/online-browser-pwa/','_blank')">
       </div>
 </div>
 <!div style="Clear:both;"> 
  <!input type="text" value="https://www.google.com" class="frmUrlVal" ID="URL" placeholder = "Enter a URL" >
 <!/div>
 <div id = "child" >
-<iframe align="top" width="100%" height="100%" allowtransparency="true" style="background: #FFFFFF;" src="https://www.google.com" onload = "check()" onerror"ext_install()" allow="camera;microphone" frameborder=yes loading ="lazy" name="myIframe" id="myIframe"> </iframe>
+<iframe align="top" width="100%" height="100%" allowtransparency="true" style="background: #FFFFFF;" src="https://online-browser-us.herokuapp.com/" onload = "check()" onerror"ext_install()" allow="camera;microphone" frameborder=yes loading ="lazy" name="myIframe" id="myIframe"> </iframe>
 </div>
 <script>
 window.onbeforeunload = () => '';
-var urlbox = document.getElementById("URL");
-urlbox.addEventListener("keydown", function (e) {
-    if (e.keyCode === 13) {
-        LoadPage();
-    }
-});
+//var urlbox = document.getElementById("URL");
+//urlbox.addEventListener("keydown", function (e) {
+//    if (e.keyCode === 13) {
+//        LoadPage();
+//    }
+//});
 function check(){
-  document.getElementById("URL").value = "";
+  //document.getElementById("URL").value = "";
 }
 </script>
   <script>
       if (navigator.serviceWorker) {
         navigator.serviceWorker.register (
-          '/iframe-browser-pwa/sw.js',
-          {scope: '/iframe-browser-pwa/'}
+          '/online-browser-pwa/sw.js',
+          {scope: '/online-browser-pwa/'}
         )
       }
   </script>
