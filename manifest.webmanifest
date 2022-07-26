@@ -2,7 +2,7 @@
   "name": "Azlan's Online Browser",
   "short_name": "Online Browser",
   "description": "An Online Browser Originally by S1monlol/pillow",
-  "scope": "/iframe-browser-pwa/",
+  "scope": "/online-browser-pwa/",
   "start_url": "https://azlancoding.github.io/online-browser-pwa/",
   "background_color": "#2C2F33",
   "theme_color": "#2C2F33",
