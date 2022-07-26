@@ -1,9 +1,9 @@
 {
-  "name": "Azlan's Iframe Browser",
-  "short_name": "Iframe Browser",
-  "description": "A browser within a website",
+  "name": "Azlan's Online Browser",
+  "short_name": "Online Browser",
+  "description": "An Online Browser Originally by S1monlol/pillow",
   "scope": "/iframe-browser-pwa/",
-  "start_url": "https://azlancoding.github.io/iframe-browser-pwa/",
+  "start_url": "https://azlancoding.github.io/online-browser-pwa/",
   "background_color": "#2C2F33",
   "theme_color": "#2C2F33",
   "display": "standalone", 
@@ -12,9 +12,9 @@
   ],
   "icons": [
       {
-        "src": "/iframe-browser-pwa/img/icon.png",
+        "src": "/online-browser-pwa/img/icon.png",
         "type": "image/png",
-        "sizes": "512x512",
+        "sizes": "856x856",
         "purpose": "any maskable"
       }
   ]
